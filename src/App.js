@@ -11,7 +11,6 @@ function App() {
     const response = await fetch(url);
     if (response.status >= 200 && response.status <= 299) {
       const usersdb = await response.json();
-      console.log(usersdb);
       setUsers(usersdb);
       setIsLoading(false);
     } else {

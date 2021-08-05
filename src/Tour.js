@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 
-const Tour = ({ id, name, info, price, image }) => {
+const Tour = ({ id, name, info, price, image, notInterestedHandeler }) => {
   return (
     <div>
-      <img src={image} alt="img"></img>
+      <img style={{ height: "2rem" }} src={image} alt="img"></img>
       <h2>{name}</h2>
-      <p>{price}</p>
+      <p className="tour-price">${price}</p>
       <p>{info}</p>
-      <button>Not Interested</button>
+      <button className="btn" onClick={() => notInterestedHandeler(id)}>
+        Not Interested
+      </button>
     </div>
   );
 };
