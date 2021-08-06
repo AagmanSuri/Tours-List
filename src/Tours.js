@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import Tour from "./Tour";
-const Tours = ({ users }) => {
+const Tours = ({ users, removeHandeler }) => {
   return (
     <section>
       <div className="title">
@@ -9,7 +9,9 @@ const Tours = ({ users }) => {
       </div>
       <div>
         {users.map((tour) => {
-          return <Tour key={tour.id} {...tour} />;
+          return (
+            <Tour key={tour.id} {...tour} removeHandeler={removeHandeler} />
+          );
         })}
       </div>
     </section>

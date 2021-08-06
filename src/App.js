@@ -17,16 +17,31 @@ function App() {
       setIsLoading(true);
     }
   };
+  const removeHandeler = (id) => {
+    const listUser = users.filter((user) => {
+      return user.id !== id;
+    });
+    setUsers(listUser);
+  };
   useEffect(() => {
     userData();
   }, []);
-
+  if (users.length === 0) {
+    return (
+      <div className="title">
+        <h1>List is empty</h1>
+        <button type="button" className="btn" onClick={() => userData()}>
+          Refresh
+        </button>
+      </div>
+    );
+  }
   if (isLoading) {
     return <Loading />;
   }
   return (
     <div>
-      <Tours users={users} />
+      <Tours users={users} removeHandeler={removeHandeler} />
     </div>
   );
 }
