@@ -1,26 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import Tour from "./Tour";
 const Tours = ({ users }) => {
-  const notInterestedHandeler = (id) => {
-    console.log(id);
-  };
   return (
-    <div>
-      {users.map((user) => {
-        return (
-          <div key={user.id}>
-            <Tour
-              id={user.id}
-              image={user.image}
-              name={user.name}
-              info={user.info}
-              price={user.price}
-              notInterestedHandeler={notInterestedHandeler(user.id)}
-            />
-          </div>
-        );
-      })}
-    </div>
+    <section>
+      <div className="title">
+        <h2>our tours</h2>
+        <div className="underline"></div>
+      </div>
+      <div>
+        {users.map((tour) => {
+          return <Tour key={tour.id} {...tour} />;
+        })}
+      </div>
+    </section>
   );
 };
 

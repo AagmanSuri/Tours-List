@@ -1,16 +1,35 @@
 import React, { useState } from "react";
 
-const Tour = ({ id, name, info, price, image, notInterestedHandeler }) => {
+const Tour = ({ id, name, info, price, image, notBtn }) => {
+  const [readMore, setReadMore] = useState(true);
+  const [ShowDetails, setShowDetails] = useState("Show less");
   return (
-    <div>
-      <img style={{ height: "2rem" }} src={image} alt="img"></img>
-      <h2>{name}</h2>
-      <p className="tour-price">${price}</p>
-      <p>{info}</p>
-      <button className="btn" onClick={() => notInterestedHandeler(id)}>
-        Not Interested
-      </button>
-    </div>
+    <article className="single-tour">
+      <img src={image} alt={name} />
+      <footer>
+        <div className="tour-info">
+          <h4>{name}</h4>
+          <h4 className="tour-price">${price}</h4>
+        </div>
+        <p>
+          {readMore ? info : `${info.substring(0, 200)}...`}
+          <button
+            onClick={() => {
+              if (readMore) {
+                setShowDetails("Show More");
+                setReadMore(!readMore);
+              } else {
+                setShowDetails("Show Less");
+                setReadMore(!readMore);
+              }
+            }}
+          >
+            {ShowDetails}
+          </button>
+        </p>
+        <button className="delete-btn">not interested</button>
+      </footer>
+    </article>
   );
 };
 
